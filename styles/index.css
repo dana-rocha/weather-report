@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url("../image/earth2.jpeg");
+    /* background-image: url("../image/earth2.jpeg"); */
     background-color: rgb(22, 118, 159);
     background-repeat: no-repeat;
     background-attachment: fixed;
