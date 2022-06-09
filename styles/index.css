@@ -23,25 +23,23 @@ header {
 .boxes {
     display: grid;
     justify-content: space-around;
-    align-items: center;
+    justify-items: start;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 400px 400px 400px;
     grid-template-rows: 300px 300px 300px;
     color: black;
     grid-gap: 30px;
-    justify-items: center;
-    align-items: center;
+    justify-items: start;
     font-size: 2em;
     padding: 15px;
 }
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    border: 6px solid rgba(185, 17, 201, 0.8);
-    text-align: center;
+    border: 6px solid rgba(17, 176, 201, 0.8);
+    text-align: start;
     padding: 10px;
     font-size: 25px;
     width: 400px;
