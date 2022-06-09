@@ -36,7 +36,7 @@
         font-size: 2em;
         padding: 15px;
         margin-top: 45px;
-        border-style: dashed;
+        /* border-style: dashed; */
     }
     
     .grid-item1, .grid-item2, .grid-item3, .grid-item4 {
