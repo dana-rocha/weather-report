@@ -1,25 +1,25 @@
-const temperature = () => {
-    const temperature = document.getElementById('temp');
-    const tempUpButton = document.getElementById('up');
-    const tempDownButton = document.getElementById('down');
+const state = {
+    currentTemp: 70,
+};
 
-    const addTemp = ("click", () => {
-        const addTemp = document.createElement("span");
-        const tempContainer = document.querySelector("#tempContainer");
-        newTemp.textContent += 1;
-        tempContainer.appendChild(newTemp);
-    })
-    const subTemp = ("click", () => {
-        const subTemp = document.createElement("span");
-        const tempContainer = document.querySelector("#tempContainer");
-        newTemp.textContent += 1;
-        tempContainer.appendChild(newTemp);
-    })
+const increaseTemp = () => {
+    state.currentTemp += 1;
+    const tempContainer = document.querySelector("#tempContainer");
+    tempContainer.textContent = `${state.currentTemp}`;
+}
+
+const decreaseTemp = () => {
+    state.currentTemp -= 1;
+    const tempContainer = document.querySelector("#tempContainer");
+    tempContainer.textContent = `${state.currentTemp}`;
 }
 
 const registerEventHandlers = () => {
-    const crabButton = document.querySelector("#addCrabButton");
-    crabButton.addEventListener("click", addCrab);
+    const increaseButton = document.querySelector("#increaseTemp");
+    increaseButton.addEventListener("click", increaseTemp);
+
+    const decreaseButton = document.querySelector("#decreaseTemp");
+    decreaseButton.addEventListener("click", decreaseTemp);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
