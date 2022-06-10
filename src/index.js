@@ -16,6 +16,7 @@ const colorCoding = () => {
 
 
 const state = {
+    city: Seattle,
     currentTemp: 70,
 };
 
@@ -42,7 +43,8 @@ const registerEventHandlers = () => {
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
-
+//city 
+const
 //drop down menu for sky
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
