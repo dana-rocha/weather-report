@@ -18,7 +18,13 @@ const weatherGarden = () => {
     const gardenTemp = document.getElementById("tempContainer");
 
     if (gardenTemp.textContent >= 80) {
-        gardenContainer.textContent = "🌵";
+        gardenContainer.textContent = "🌵 🌵 🌵 🌵";
+    } else if (gardenTemp.textContent >= 70 && gardenTemp.textContent <= 79) {
+        gardenContainer.textContent = "🌸 🌿 🌼 ";
+    } else if (gardenTemp.textContent >= 60 && gardenTemp.textContent <= 69) {
+        gardenContainer.textContent = "🌾 🌾 🌾 ";
+    } else {
+        gardenContainer.textContent = "🌲 ⛄️";
     }
 }
 
@@ -40,6 +46,7 @@ const decreaseTemp = () => {
     const tempContainer = document.querySelector("#tempContainer");
     tempContainer.textContent = `${state.currentTemp}`;
     colorCoding();
+    weatherGarden();
 }
 
 const registerEventHandlers = () => {
@@ -52,19 +59,19 @@ const registerEventHandlers = () => {
 
 // document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
-//drop down menu for sky
-// function myFunction() {
-//     document.getElementById("myDropdown").classList.toggle("show");
-// }
+// drop down menu for sky
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function(e) {
-//     if (!e.target.matches('.dropbtn')) {
-//         var myDropdown = document.getElementById("myDropdown");
-//         if (myDropdown.classList.contains('show')) {
-//             myDropdown.classList.remove('show');
-//         }
-//     }
-// }
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
