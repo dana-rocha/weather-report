@@ -3,7 +3,7 @@ const colorCoding = () => {
 
     if (colorTemp.textContent >= 80) {
         colorTemp.style.color = "red";
-    } else if (colorTemp.textContent  >= 70 && colorTemp.textContent <= 79) {
+    } else if (colorTemp.textContent >= 70 && colorTemp.textContent <= 79) {
         colorTemp.style.color = "orange";
     } else if (colorTemp.textContent >= 60 && colorTemp.textContent <= 69) {
         colorTemp.style.color = "yellow";
@@ -42,3 +42,18 @@ const registerEventHandlers = () => {
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+//drop down menu for sky
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+        }
+    }
+}

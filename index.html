@@ -22,7 +22,7 @@
                 <label id="temperature"></label>
                 <button id="increase-button" onclick="increaseTemp()">Increase Temperature</button><br><br>
                 <h3 id="tempContainer"> 70 </h3>
-                <button id="current-button" onclick="getCurrentTemp()">Current Temperature</button><br><br>
+                <!--<button id="current-button" onclick="getCurrentTemp()">Current Temperature</button><br><br>-->
                 <button id="decrease-button" onclick="decreaseTemp()">Decrease Temperature</button><br><br>
             </div>
             <div class="grid-item2">
@@ -33,12 +33,22 @@
             </div>
             <div class="grid-item3">
                 <br><br><br><label id="sky">SKY</label>
-                <div id="skyPic" class="sky-item2"></div>
+                <div id="skyPic" class="sky-item2"><button class="dropbtn" onclick="myFunction()">Dropdown
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="#">Sunny</a>
+                        <a href="#">Cloudy</a>
+                        <a href="#">Rainy</a>
+                        <a href="#">Snowy</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <section class="grid-item4">
         <div id="skyGarden" class="sky-item1">
+
         </div>
     </section>
     <br>
