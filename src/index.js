@@ -14,6 +14,20 @@ const colorCoding = () => {
     }
 };
 
+const weatherGarden = () => {
+    const gardenTemp = document.getElementById("tempContainer");
+
+    if (gardenTemp.textContent >= 80) {
+        gardenContainer.textContent = "🌵 🌵 🌵 🌵";
+    } else if (gardenTemp.textContent >= 70 && gardenTemp.textContent <= 79) {
+        gardenContainer.textContent = "🌸 🌿 🌼 ";
+    } else if (gardenTemp.textContent >= 60 && gardenTemp.textContent <= 69) {
+        gardenContainer.textContent = "🌾 🌾 🌾 ";
+    } else {
+        gardenContainer.textContent = "🌲 ⛄️";
+    }
+}
+
 
 const state = {
     city: Seattle,
@@ -25,6 +39,7 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector("#tempContainer");
     tempContainer.textContent = `${state.currentTemp}`;
     colorCoding();
+    weatherGarden();
 }
 
 const decreaseTemp = () => {
@@ -32,20 +47,20 @@ const decreaseTemp = () => {
     const tempContainer = document.querySelector("#tempContainer");
     tempContainer.textContent = `${state.currentTemp}`;
     colorCoding();
+    weatherGarden();
 }
 
 const registerEventHandlers = () => {
-    const increaseButton = document.querySelector("#increaseTemp");
+    const increaseButton = document.querySelector("#increase-button");
     increaseButton.addEventListener("click", increaseTemp);
 
-    const decreaseButton = document.querySelector("#decreaseTemp");
+    const decreaseButton = document.querySelector("#decrease-button");
     decreaseButton.addEventListener("click", decreaseTemp);
 };
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
-//city 
-const
-//drop down menu for sky
+// document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+// drop down menu for sky
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -59,3 +74,5 @@ window.onclick = function(e) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
