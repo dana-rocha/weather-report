@@ -16,8 +16,9 @@ body {
 }
 
 header {
-    background-color: #18bed8;
+    margin-top: 100px;
     min-height: 100px;
+    font-size: 30px;
 }
 
 .boxes {
@@ -28,13 +29,12 @@ header {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 400px 400px 400px;
+    grid-template-columns: 500px 500px 500px;
     color: black;
     grid-gap: 30px;
     justify-items: start;
     font-size: 2em;
     padding: 15px;
-    margin-top: 45px;
 }
 
 .grid-item1 {
@@ -46,6 +46,8 @@ header {
     font-size: 25px;
     width: 400px;
     height: 300px;
+    margin-top: 100px;
+    border-radius: 30px;
 }
 
 .grid-item2,
@@ -57,6 +59,8 @@ header {
     font-size: 25px;
     width: 400px;
     height: 300px;
+    margin-top: 100px;
+    border-radius: 30px;
 }
 
 .grid-item4 {
@@ -65,9 +69,11 @@ header {
     text-align: start;
     padding: 10px;
     font-size: 25px;
-    width: 400px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
     margin: 0 auto;
+    margin-top: 150px;
+    border-radius: 80px;
 }
 
 footer {
