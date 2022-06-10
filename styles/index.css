@@ -120,7 +120,8 @@ header {
 .grid-item4 {
     background-color: rgba(255, 255, 255, 0.8);
     border: 6px solid rgba(17, 176, 201, 0.8);
-    text-align: start;
+    text-align: center;
+    color: black;
     padding: 10px;
     font-size: 25px;
     width: 600px;

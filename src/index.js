@@ -14,6 +14,14 @@ const colorCoding = () => {
     }
 };
 
+const weatherGarden = () => {
+    const gardenTemp = document.getElementById("tempContainer");
+
+    if (gardenTemp.textContent >= 80) {
+        gardenContainer.textContent = "🌵";
+    }
+}
+
 
 const state = {
     currentTemp: 70,
@@ -24,6 +32,7 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector("#tempContainer");
     tempContainer.textContent = `${state.currentTemp}`;
     colorCoding();
+    weatherGarden();
 }
 
 const decreaseTemp = () => {
@@ -34,26 +43,28 @@ const decreaseTemp = () => {
 }
 
 const registerEventHandlers = () => {
-    const increaseButton = document.querySelector("#increaseTemp");
+    const increaseButton = document.querySelector("#increase-button");
     increaseButton.addEventListener("click", increaseTemp);
 
-    const decreaseButton = document.querySelector("#decreaseTemp");
+    const decreaseButton = document.querySelector("#decrease-button");
     decreaseButton.addEventListener("click", decreaseTemp);
 };
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+// document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 //drop down menu for sky
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+// function myFunction() {
+//     document.getElementById("myDropdown").classList.toggle("show");
+// }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-            myDropdown.classList.remove('show');
-        }
-    }
-}
+// // Close the dropdown if the user clicks outside of it
+// window.onclick = function(e) {
+//     if (!e.target.matches('.dropbtn')) {
+//         var myDropdown = document.getElementById("myDropdown");
+//         if (myDropdown.classList.contains('show')) {
+//             myDropdown.classList.remove('show');
+//         }
+//     }
+// }
+
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
