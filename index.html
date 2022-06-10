@@ -17,54 +17,35 @@
         </div>
     </header>
     <section class="boxes">
-        <section class="grid-container">
-
-            <section id="temp-section" class="grid-item1">
-                <h1> Temperature </h1>
-                <section>
-                    <button id="addTempButton">Add(+)</button>
-                    <section id="tempcontainer">
-
-
-                        <button id="increaseTemp"> Increase </button>
-
-                        <section id="tempContainer">
-
-                            <button id="subTepButton">Sub-</button>
-                            <h3 id="currentTemp"> 70 </h3>
-
-
-                        </section>
-
-                        <button id="decreaseTemp"> Decrease </button>
-
-
-                    </section>
-
-
-
-                    <section id="sky-section" class="grid-item2">
-                        <h1> Sky </h1>
-                    </section>
-
-                    <section id="city-name" class="grid-item3">
-                        <h1> City Name </h1>
-                    </section>
-
-                    <section id="weather-garden" class="grid-item4">
-                        <h1> Weather Garden </h1>
-                    </section>
-
-                </section>
-
-            </section>
-
-            <footer>
-                <p>&copy;2022 Vida & Dana</p>
-            </footer>
-
-            <script src="src/index.js" text="text/javascript"></script>
-            <script src="./node_modules/axios/dist/axios.min.js"></script>
+        <div class="grid-container ">
+            <div class="grid-item1"><br><br>
+                <label id="temperature"></label>
+                <button onclick="increaseTemp()">Increase Temperature</button><br><br>
+                <button onclick="getCurrentTemp()">Current Temperature</button><br><br>
+                <button onclick="decreaseTemp()">Decrease Temperature</button><br><br>
+            </div>
+            <div class="grid-item2">
+                <br><br><br>
+                <label id="cityid">CITY</label>
+                <input type="text" placeholder="Enter a City Name" id="cityname">
+                <button onclick="resetCity()"> Reset City </button>
+            </div>
+            <div class="grid-item3">
+                <br><br><br><label id="sky">SKY</label>
+                <div id="skyPic" class="sky-item2"></div>
+            </div>
+        </div>
+    </section>
+    <section class="grid-item4">
+        <div id="skyGarden" class="sky-item1">
+        </div>
+    </section>
+    <br>
+    <footer>
+        <p>&copy;2022 Vida & Dana</p>
+    </footer>
+    <script src="src/index.js" text="text/javascript"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
