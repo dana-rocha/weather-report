@@ -59,7 +59,6 @@ header {
 
 .grid-item4 {
     background-color: rgba(255, 255, 255, 0.8);
-    background-image: url('../image/earth-1280-726.jpeg');
     border: 6px solid rgba(17, 176, 201, 0.8);
     justify-items: center;
     align-items: center;
@@ -90,7 +89,8 @@ header {
     padding: 3px;
 }
 
-#increase-button {
+
+/* #increase-button {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
@@ -98,7 +98,7 @@ header {
 #decrease-button {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-}
+} */
 
 .sky-item {
     background-color: rgba(225, 241, 243, 0.8);

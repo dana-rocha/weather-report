@@ -1,5 +1,6 @@
+console.log("hello world")
 let state = {
-    currentTemp = 70,
+    currentTemp: 70,
     city: 'Seattle'
 };
 
@@ -11,16 +12,17 @@ const reset = document.getElementById('reset');
 const defaultCity = 'Seattle';
 
 const increaseTemp = () => {
+    console.log("inside increase temp")
     state.currentTemp += 1;
-    const tempContainer = document.querySelector('temperature')
-    tempContainer.textContent = `${currentTemp} ℉`;
+    const tempContainer = document.querySelector('tempContainer')
+    tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
 }
 
 const decreaseTemp = () => {
     state.currentTemp -= 1;
-    const tempContainer = document.querySelector('temperature')
-    tempContainer.textContent = `${currentTemp} ℉`;
+    const tempContainer = document.querySelector('tempContainer')
+    tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
 }
 
@@ -64,7 +66,7 @@ const updateCity = () => {
     const inputCity = document.querySelector('#cityname');
     inputCity.addEventListener('change', updateValue);
 
-    const headerCityName = document.getElementById('#headerCityName');
+    const headerCityName = document.getElementById('headerCityName');
     headerCityName.textContent = inputCity;
 
     function updateValue(x) {
@@ -115,10 +117,10 @@ const updateSky = (a) => {
 
 //registering events
 const registerEventHandlers = () => {
-    const increaseButton = document.querySelector("#increase-button");
+    const increaseButton = document.getElementById("increase-button");
     increaseButton.addEventListener("click", increaseTemp);
 
-    const decreaseButton = document.querySelector("#decrease-button");
+    const decreaseButton = document.getElementById("decrease-button");
     decreaseButton.addEventListener("click", decreaseTemp);
 
     skyType.addEventListener('change', updateSky);
