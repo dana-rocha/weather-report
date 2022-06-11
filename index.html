@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css" type="text/css">
+    <link rel="stylesheet" href="./styles/index.css" type="text/css">
     <title>Weather Report</title>
 </head>
 
@@ -13,51 +13,49 @@
     <header>
         <div class="text">
             <h1>Weather Report </h1>
-            <p>Choose a location that you want to check its weather</p>
+            <span id="headerCityName" class="header-name">Seattle</span>
         </div>
     </header>
     <section class="boxes">
         <div class="grid-container ">
             <div class="grid-item1"><br><br>
                 <label id="temperature"></label>
-                <button id="increase-button" onClick="increaseTemp()"> Increase Temperature </button>
+                <button id="increase-button" class="arrow up" onClick=" increaseTemp() ">+</button>
                 <br><br>
-                <h3 id="tempContainer"> 70 </h3>
-                <button id="decrease-button" onClick="decreaseTemp()"> Decrease Temperature </button>
-                <!--<button id="current-button" onclick="getCurrentTemp()">Current Temperature</button><br><br>-->
+                <span id="tempContainer "> 70</span>
+                <br>
+                <button id="decrease-button " class="arrow down" onClick=" decreaseTemp() ">-</button>
             </div>
-            <div class="grid-item2">
+            <div class="grid-item2 ">
                 <br><br><br>
-                <label id="cityid">CITY</label>
-                <input type="text" placeholder="Enter a City Name" id="cityname">
-                <button onclick="resetCity()"> Reset City </button>
+                <h2>CITY</h2>
+                <input type="text " placeholder="Enter a City Name " id="cityname ">
+                <button id='reset' onclick="resetCity() "> Reset City </button>
             </div>
-            <div class="grid-item3">
-                <br><br><br><label id="sky">SKY</label>
-                <div id="skyPic" class="sky-item2"><button class="dropbtn" onclick="myFunction()">Dropdown
-                    <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content" id="myDropdown">
-                        <a href="#">Sunny</a>
-                        <a href="#">Cloudy</a>
-                        <a href="#">Rainy</a>
-                        <a href="#">Snowy</a>
-                    </div>
-                </div>
+            <div class="grid-item3 ">
+                <br><br><br>
+                <label id="sky ">SKY</label>
+                <br>
+                <select id="skyoptions ">
+                    <option value=" ">Select Sky Type</option>
+                    <option value="sunny ">🌈Sunny☀️</option>
+                    <option value="cloudy ">⛅️Cloudy☁️</option>
+                    <option value="rainy ">⛈Rainy☔️</option>
+                    <option value="snowy ">❄️Snowy☃️</option>
+                </select>
+                <div id="skyPic " class="sky-item "></div>
             </div>
         </div>
     </section>
-    <section class="grid-item4">
-        <div id="skyGarden" class="sky-item1">
-            <section id="gardenContainer"> Garden goes here </section>
-        </div>
+    <section class="grid-item4 ">
+        <div id="skyGarden " class="sky-item1 ">🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃</div>
     </section>
     <br>
     <footer>
         <p>&copy;2022 Vida & Dana</p>
     </footer>
-    <script src="src/index.js" text="text/javascript"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="src/index.js " text="text/javascript "></script>
+    <script src="./node_modules/axios/dist/axios.min.js "></script>
 </body>
 
 </html>
