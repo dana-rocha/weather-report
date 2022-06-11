@@ -14,14 +14,14 @@ const defaultCity = 'Seattle';
 const increaseTemp = () => {
     console.log("inside increase temp")
     state.currentTemp += 1;
-    const tempContainer = document.querySelector('tempContainer')
+    const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
 }
 
 const decreaseTemp = () => {
     state.currentTemp -= 1;
-    const tempContainer = document.querySelector('tempContainer')
+    const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
 }
@@ -102,7 +102,7 @@ const colorCoding = () => {
 };
 
 const updateSky = (a) => {
-    const optionSky = e.target.value;
+    const optionSky = a.target.value;
 
     if (optionSky === '⛅️Cloudy☁️') {
         displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';;
