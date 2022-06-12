@@ -25,8 +25,8 @@ const decreaseTemp = () => {
         colorCoding();
 
     }
-    // The getLatAndLon and getCurrentTemp functions have working functionality 
-    // but there are errors in the Console log, Goeun said we can ignore it
+// The getLatAndLon and getCurrentTemp functions have working functionality 
+// but there are errors in the Console log, Goeun said we can ignore it
 const getLatAndLon = function() {
     let latitude;
     let longitude;
@@ -53,7 +53,7 @@ const getCurrentTemp = function(latitude, longitude) {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
 
-            console.log(`new temp: ${temperature}`);
+            // console.log(`new temp: ${temperature}`);
             updateCurrentTemp(temperature);
         })
         .catch((error) => {
@@ -90,7 +90,7 @@ const updateCity = () => {
         city = x.target.value;
         headerCityName.textContent = 'Current Weather for ' + city;
         state.city = city;
-        console.log(`This is the new city ${state.city}`);
+        // console.log(`This is the new city ${state.city}`);
         getLatAndLon(state.city);
     }
 };
