@@ -44,7 +44,8 @@ header {
 .grid-item1,
 .grid-item2,
 .grid-item3 {
-    background-color: rgba(119, 224, 238, 0.8);
+    background-color: #cccccc;
+    background-image: linear-gradient(rgb(10, 94, 189), rgb(18, 165, 165));
     border: 2px solid rgba(5, 5, 5, 0.383);
     border-radius: 30px;
     text-align: center;
@@ -58,7 +59,8 @@ header {
 }
 
 .grid-item4 {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #cccccc;
+    background-image: linear-gradient(rgb(110, 215, 241), rgb(18, 165, 87));
     border: 6px solid rgba(17, 176, 201, 0.8);
     justify-items: center;
     align-items: center;
@@ -72,8 +74,8 @@ header {
 }
 
 #temperature {
-    position: relative;
-    font-size: 5rem;
+    position: fixed;
+    font-size: 4rem;
 }
 
 #tempContainer {
@@ -83,22 +85,13 @@ header {
 }
 
 .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
+    border: solid rgb(24, 104, 116);
+    border-width: 1 3px 3px 0;
     display: inline-block;
     padding: 3px;
+    width: 50px;
+    height: 30px;
 }
-
-
-/* #increase-button {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-}
-
-#decrease-button {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-} */
 
 .sky-item {
     /* background-color: rgba(225, 241, 243, 0.8); */
@@ -108,11 +101,11 @@ header {
     border-radius: 100px;
     position: absolute;
     padding: 50px;
-    margin-top: 2rem;
+    margin-top: .5rem;
     margin-left: 4rem;
     font-size: 60px;
     width: 250px;
-    height: 220px;
+    height: 190px;
     color: black;
 }
 
@@ -126,7 +119,7 @@ header {
 
 .sunny {
     background: none;
-    background-image: url('../image/smiling-sun-illustration-character-34434947.jpeg');
+    background-image: url('../image/sunny-sun.gif');
     align-items: center;
     border-radius: 100px;
     background-size: cover;
