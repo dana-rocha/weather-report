@@ -1,6 +1,6 @@
 console.log("hello world")
 let state = {
-    currentTemp: 70,
+    // currentTemp: 70,
     city: 'Honolulu'
 };
 
@@ -37,25 +37,12 @@ const getLatAndLon = function() {
             console.log('Printing inside lat and lon stuff');
             console.log(`latitude is this: ${latitude}`);
             console.log(`longitude is this: ${longitude}`);
+            console.log(`display name ${response.data[0].display_name}`);
             
             return getCurrentTemp(latitude, longitude);
-
-            // axios
-            //     .get('http://localhost:5000/weather', {
-            //         params: { lat: latitude, lon: longitude },
-            //     })
-            //     .then((response) => {
-            //         const kelvin = response.data.current.temp;
-            //         const fahrenheit = (9 / 5) * (kelvin - 273) + 32;
-            //         temperature = Math.round(fahrenheit);
-            //         newTemperature();
-            //     })
-            //     .catch((error) => {
-            //         console.log('cannot get new weather');
-            //     });
         })
         .catch((error) => {
-            console.log(response.status);
+            // console.log(response.status);
             console.log('Cannot find lat and lon');
         });
 
@@ -69,12 +56,12 @@ const getCurrentTemp = function(latitude, longitude) {
         .then((response) => {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
-            // temperature = Math.round(fahrenheit);
-            // console.log(`temp in fahren: ${temperature}`);
-
-            const tempContainer = document.querySelector('#tempContainer')
-            tempContainer.textContent = `${temperature} ℉`;
             console.log(`temp in fahren: ${temperature}`);
+            // return updateCurrentTemp(temperature);
+
+            // const tempContainer = document.querySelector('#tempContainer')
+            // tempContainer.textContent = `${temperature} ℉`;
+            // console.log(`temp in fahren: ${temperature}`);
             // return updateValue(temperature);
             // newTemperature();
         })
@@ -82,6 +69,16 @@ const getCurrentTemp = function(latitude, longitude) {
             console.log('cannot get new weather');
         });
 }
+
+// Working on this to update temperature depending on city name
+const updateCurrentTemp = function(temp) {
+    state.currentTemp = temp;
+    const newTemperature = document.getElementById('tempContainer');
+    newTemperature.textContent = `${state.currentTemp} ℉`;
+    colorCoding();
+}
+
+
 
 const resetCity = () => {
     state.city = 'Seattle';
@@ -91,17 +88,23 @@ const resetCity = () => {
 };
 
 
+// This function has error in Console
+// "Uncaught TypeError: Cannot set properties of null (setting 'textContent') at HTMLInputElement.updateCity (index.js:95:32)"
 const updateCity = () => {
     const inputCity = document.querySelector('#cityName');
     inputCity.addEventListener('change', updateValue);
 
-    const headercityName = document.getElementById('headercityName');
-    headercityName.textContent = inputCity;
+    const headerCityName = document.getElementById('headerCityName');
+    headerCityName.textContent = inputCity;
+
+    // console.log(`New city!!`);
 
     function updateValue(x) {
         city = x.target.value;
-        headercityName.textContent = 'Current Weather for ' + city;
-        // getCurrentTemp();
+        headerCityName.textContent = 'Current Weather for ' + city;
+        state.city = city;
+        console.log(`This is the new city ${state.city}`);
+        return getLatAndLon(state.city);
     }
 };
 
