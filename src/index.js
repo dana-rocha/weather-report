@@ -77,7 +77,7 @@ const updateCurrentTemp = function(temp) {
 const resetCity = () => {
     state.city = 'Seattle';
     document.querySelector('#cityName').value = '';
-    const curWeatherHeader = document.getElementById('headercityName');
+    const curWeatherHeader = document.getElementById('headerCityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
 };
 
@@ -86,7 +86,7 @@ const updateCity = () => {
     const inputCity = document.querySelector('#cityName');
     inputCity.addEventListener('change', updateValue);
 
-    const headerCityName = document.getElementById('headercityName');
+    const headerCityName = document.getElementById('headerCityName');
     headerCityName.textContent = inputCity;
 
     function updateValue(x) {
@@ -123,7 +123,7 @@ const colorCoding = () => {
     }
 };
 const changeSky = function() {
-    const input = document.querySelector('#skytype-select');
+    const input = document.querySelector('#skyOptions-select');
 
     input.addEventListener('change', (event) => {
         const skyOutput = document.querySelector('#sky');
