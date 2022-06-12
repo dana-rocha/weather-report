@@ -17,6 +17,7 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
+    updateSky()
 }
 
 const decreaseTemp = () => {
@@ -24,6 +25,7 @@ const decreaseTemp = () => {
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
+    updateSky()
 }
 
 const getCurrentTemp = function() {
@@ -31,7 +33,7 @@ const getCurrentTemp = function() {
     let longitude;
 
     axios
-        .get('http://localhost:5000/location', { params: { q: city } })
+        .get('http://localhost:5000/location', { params: { q: state.city } })
         .then((response) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
@@ -100,18 +102,30 @@ const colorCoding = () => {
         landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
     }
 };
+const changeSky = function() {
+    const input = document.querySelector('#skytype-select');
 
+    input.addEventListener('change', (event) => {
+        const skyOutput = document.querySelector('#sky');
+        skyOutput.textContent = getSky(event.target.value);
+    });
+};
 const updateSky = (a) => {
     const optionSky = a.target.value;
+    let img;
 
     if (optionSky === '⛅️Cloudy☁️') {
-        displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';;
+        displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+        img = 'cloudy';
     } else if (optionSky === '🌈Sunny☀️') {
         displaySky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+        img = 'sunny';
     } else if (optionSky === '⛈Rainy☔️') {
         displaySky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+        img = 'rainy';
     } else if (optionSky === '❄️Snowy☃️') {
         displaySky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+        img = 'snowy';
     }
 };
 
