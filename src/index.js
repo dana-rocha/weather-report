@@ -1,16 +1,16 @@
 console.log("hello world")
-// Leaving a comment here - Dana
+    // Leaving a comment here - Dana
 let state = {
     currentTemp: 70,
     city: 'Seattle'
 };
 
-const cityID = document.getElementById('cityname');
-const displayName = document.getElementById('headerCityName');
+const cityID = document.getElementById('cityName');
+const displayName = document.getElementById('headercityName');
 const displaySky = document.getElementById('skyPic');
-const skyType = document.getElementById('skyoptions');
+const skyType = document.getElementById('skyOptions');
 const reset = document.getElementById('reset');
-const defaultCity = 'Seattle';
+//const defaultCity = 'Seattle';
 
 const increaseTemp = () => {
     console.log("inside increase temp")
@@ -18,7 +18,7 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
-    updateSky()
+
 }
 
 const decreaseTemp = () => {
@@ -26,36 +26,55 @@ const decreaseTemp = () => {
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
-    updateSky()
+
 }
 
-const getCurrentTemp = function() {
+const getLatAndLon = function() {
     let latitude;
     let longitude;
 
-    axios
-        .get('http://localhost:5000/location', { params: { q: state.city } })
+    axios.get('http://localhost:5000/location', { params: { q: state.city } })
         .then((response) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
-            axios
-                .get('http://localhost:5000/weather', {
-                    params: { lat: latitude, lon: longitude },
-                })
-                .then((response) => {
-                    const kelvin = response.data.current.temp;
-                    const fahrenheit = (9 / 5) * (kelvin - 273) + 32;
-                    temperature = Math.round(fahrenheit);
-                    newTemperature();
-                })
-                .catch((error) => {
-                    console.log('error');
-                });
+            // console.log('Printing inside lat and lon stuff');
+            // console.log(`latitude is this: ${latitude}`);
+            // console.log(`longitude is this: ${longitude}`);
+            // console.log(`display name ${response.data[0].display_name}`);
+
+            return getCurrentTemp(latitude, longitude);
         })
         .catch((error) => {
-            console.log('error :(');
+            // console.log(response.status);
+            console.log('Cannot find lat and lon');
         });
+
 };
+
+const getCurrentTemp = function(latitude, longitude) {
+    axios
+        .get('http://localhost:5000/weather', {
+            params: { lat: latitude, lon: longitude },
+        })
+        .then((response) => {
+            const kelvin = response.data.current.temp;
+            const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
+            // console.log(`temp in fahren: ${temperature}`);
+            console.log(`new temp: ${temperature}`);
+            return updateCurrentTemp(temperature);
+        })
+        .catch((error) => {
+            console.log('cannot get new weather');
+        });
+}
+
+// Working on this to update temperature depending on city name
+const updateCurrentTemp = function(temp) {
+    state.currentTemp = temp;
+    const newTemperature = document.getElementById('tempContainer');
+    newTemperature.textContent = `${state.currentTemp} ℉`;
+    colorCoding();
+}
 
 const resetCity = () => {
     state.city = 'Seattle';
@@ -75,7 +94,9 @@ const updateCity = () => {
     function updateValue(x) {
         city = x.target.value;
         headerCityName.textContent = 'Current Weather for ' + city;
-        getCurrentTemp();
+        state.city = city;
+        console.log(`This is the new city ${state.city}`);
+        return getLatAndLon(state.city);
     }
 };
 
@@ -143,7 +164,7 @@ const registerEventHandlers = () => {
     cityID.addEventListener('input', updateCity);
 
     reset.addEventListener('click', resetCity);
-    getCurrentTemp();
+    //getCurrentTemp();
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
