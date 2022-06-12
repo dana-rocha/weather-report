@@ -94,8 +94,8 @@ header {
 }
 
 .sky-item {
-    background-color: rgba(225, 241, 243, 0.8);
-    background-image: url('../image/sunny-sun.gif');
+    /* background-color: rgba(225, 241, 243, 0.8); */
+    /* background-image: url('../image/sunny-sun.gif'); */
     border: 1px solid rgba(62, 75, 78, 0.383);
     background-size: 110%;
     border-radius: 100px;
