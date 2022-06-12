@@ -1,7 +1,7 @@
 console.log("hello world")
 let state = {
-    // currentTemp: 70,
-    city: 'Honolulu'
+    currentTemp: 70,
+    city: 'Seattle'
 };
 
 const cityID = document.getElementById('cityName');
@@ -56,14 +56,9 @@ const getCurrentTemp = function(latitude, longitude) {
         .then((response) => {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
-            console.log(`temp in fahren: ${temperature}`);
-            // return updateCurrentTemp(temperature);
-
-            // const tempContainer = document.querySelector('#tempContainer')
-            // tempContainer.textContent = `${temperature} ℉`;
             // console.log(`temp in fahren: ${temperature}`);
-            // return updateValue(temperature);
-            // newTemperature();
+            console.log(`new temp: ${temperature}`);
+            return updateCurrentTemp(temperature);
         })
         .catch((error) => {
             console.log('cannot get new weather');
@@ -158,7 +153,7 @@ const registerEventHandlers = () => {
     cityID.addEventListener('input', updateCity);
 
     reset.addEventListener('click', resetCity);
-    getLatAndLon();
+    // getLatAndLon();
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
