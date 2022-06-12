@@ -64,6 +64,7 @@ header {
     border: 6px solid rgba(17, 176, 201, 0.8);
     justify-items: center;
     align-items: center;
+    font-size: 50px;
     color: black;
     padding: 50px;
     width: 400px;
@@ -151,7 +152,7 @@ header {
 
 .winter {
     background: none;
-    background-image: url('../image/winter.png');
+    background-image: url('../image/38-384323_clip-art-raining-cloud-cartoon-transparent-background-rain.png');
     align-items: center;
     border-radius: 300px;
     background-size: cover;
@@ -159,7 +160,7 @@ header {
 
 .spring {
     background: none;
-    background-image: url('../image/spring.jpeg');
+    background-image: url('../image/smiling-sun-illustration-character-34434947.jpeg');
     align-items: center;
     border-radius: 300px;
     background-size: cover;
@@ -167,7 +168,7 @@ header {
 
 .freez {
     background: none;
-    background-image: url('../image/freezing.jpeg');
+    background-image: url('../image/mascot-illustration-featuring-happy-snowflakes-260nw-528059782.webp');
     align-items: center;
     border-radius: 300px;
     background-size: cover;

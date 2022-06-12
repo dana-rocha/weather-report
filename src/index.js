@@ -1,5 +1,3 @@
-console.log("hello world")
-    // Leaving a comment here - Dana
 let state = {
     currentTemp: 70,
     city: 'Seattle'
@@ -78,17 +76,17 @@ const updateCurrentTemp = function(temp) {
 
 const resetCity = () => {
     state.city = 'Seattle';
-    document.querySelector('#cityname').value = '';
-    const curWeatherHeader = document.getElementById('headerCityName');
+    document.querySelector('#cityName').value = '';
+    const curWeatherHeader = document.getElementById('headercityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
 };
 
 
 const updateCity = () => {
-    const inputCity = document.querySelector('#cityname');
+    const inputCity = document.querySelector('#cityName');
     inputCity.addEventListener('change', updateValue);
 
-    const headerCityName = document.getElementById('headerCityName');
+    const headerCityName = document.getElementById('headercityName');
     headerCityName.textContent = inputCity;
 
     function updateValue(x) {
@@ -164,6 +162,7 @@ const registerEventHandlers = () => {
     cityID.addEventListener('input', updateCity);
 
     reset.addEventListener('click', resetCity);
+
     //getCurrentTemp();
 };
 
