@@ -19,14 +19,14 @@ const increaseTemp = () => {
 }
 
 const decreaseTemp = () => {
-    state.currentTemp -= 1;
-    const tempContainer = document.querySelector('#tempContainer')
-    tempContainer.textContent = `${state.currentTemp} ℉`;
-    colorCoding();
+        state.currentTemp -= 1;
+        const tempContainer = document.querySelector('#tempContainer')
+        tempContainer.textContent = `${state.currentTemp} ℉`;
+        colorCoding();
 
-}
-// The getLatAndLon and getCurrentTemp functions have working functionality 
-// but there are errors in the Console log, Goeun said we can ignore it
+    }
+    // The getLatAndLon and getCurrentTemp functions have working functionality 
+    // but there are errors in the Console log, Goeun said we can ignore it
 const getLatAndLon = function() {
     let latitude;
     let longitude;
@@ -52,7 +52,7 @@ const getCurrentTemp = function(latitude, longitude) {
         .then((response) => {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
-            
+
             console.log(`new temp: ${temperature}`);
             updateCurrentTemp(temperature);
         })
@@ -143,6 +143,7 @@ const updateSky = (a) => {
         displaySky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
         img = 'snowy';
     }
+
 };
 
 //registering events
