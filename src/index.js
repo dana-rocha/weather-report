@@ -53,7 +53,6 @@ const getCurrentTemp = function(latitude, longitude) {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
 
-            // console.log(`new temp: ${temperature}`);
             updateCurrentTemp(temperature);
         })
         .catch((error) => {
@@ -61,7 +60,7 @@ const getCurrentTemp = function(latitude, longitude) {
         });
 }
 
-// Working on this to update temperature depending on city name
+// Update temperature depending on city name
 const updateCurrentTemp = function(temp) {
     state.currentTemp = temp;
     const newTemperature = document.getElementById('tempContainer');
@@ -84,21 +83,20 @@ const updateCity = () => {
     inputCity.addEventListener('change', updateValue);
 
     const headerCityName = document.getElementById('headerCityName');
-    // headerCityName.textContent = inputCity;
     headerCityName.value = inputCity;
 
     function updateValue(x) {
         city = x.target.value;
         headerCityName.textContent = 'Current Weather for ' + city;
         state.city = city;
-        // console.log(`This is the new city ${state.city}`);
+
         getLatAndLon(state.city);
     }
 };
 
 
 
-// changing temperature color and garden picture base on degree
+// Changing temperature color and garden picture base on degree
 const colorCoding = () => {
     let landscape = document.querySelector('#skyGarden');
     let colorTemp = document.getElementById('tempContainer');
@@ -120,6 +118,7 @@ const colorCoding = () => {
         landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
     }
 };
+
 const changeSky = function() {
     const input = document.querySelector('#skyOptions-select');
 
@@ -128,6 +127,7 @@ const changeSky = function() {
         skyOutput.textContent = getSky(event.target.value);
     });
 };
+
 const updateSky = () => {
     const optionSky = document.querySelector('#skyOptions').value;
     let landscape = document.querySelector('#skyType');
@@ -153,7 +153,7 @@ const updateSky = () => {
 };
 
 
-//registering events
+// Registering events
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-button");
     increaseButton.addEventListener("click", increaseTemp);
@@ -167,7 +167,6 @@ const registerEventHandlers = () => {
 
     reset.addEventListener('click', resetCity);
 
-    //getCurrentTemp();
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
