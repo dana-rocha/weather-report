@@ -84,7 +84,8 @@ const updateCity = () => {
     inputCity.addEventListener('change', updateValue);
 
     const headerCityName = document.getElementById('headerCityName');
-    headerCityName.textContent = inputCity;
+    // headerCityName.textContent = inputCity;
+    headerCityName.value = inputCity;
 
     function updateValue(x) {
         city = x.target.value;
