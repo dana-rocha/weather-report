@@ -127,25 +127,30 @@ const changeSky = function() {
         skyOutput.textContent = getSky(event.target.value);
     });
 };
-const updateSky = (a) => {
-    const optionSky = a.target.value;
+const updateSky = () => {
+    const optionSky = document.querySelector('#skyOptions').value;
+    let landscape = document.querySelector('#skyType');
+    const skyContainer = document.querySelector('#sky');
     let img;
 
-    if (optionSky === '⛅️Cloudy☁️') {
-        displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+    if (optionSky === 'cloudy') {
+        landscape.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
         img = 'cloudy';
-    } else if (optionSky === '🌈Sunny☀️') {
-        displaySky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+    } else if (optionSky === 'sunny') {
+        landscape.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
         img = 'sunny';
-    } else if (optionSky === '⛈Rainy☔️') {
-        displaySky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+    } else if (optionSky === 'rainy') {
+        landscape.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
         img = 'rainy';
-    } else if (optionSky === '❄️Snowy☃️') {
-        displaySky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+    } else if (optionSky === 'snowy') {
+        landscape.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
         img = 'snowy';
     }
-
+    skyContainer.textContent = '';
+    const skyContent = document.querySelector('#skyPic');
+    skyContent.classList = `sky-item ${img}`;
 };
+
 
 //registering events
 const registerEventHandlers = () => {

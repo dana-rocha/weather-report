@@ -64,7 +64,7 @@ header {
     border: 6px solid rgba(17, 176, 201, 0.8);
     justify-items: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 40px;
     color: black;
     padding: 50px;
     width: 400px;
@@ -104,7 +104,7 @@ header {
     padding: 50px;
     margin-top: .5rem;
     margin-left: 4rem;
-    font-size: 60px;
+    font-size: 40px;
     width: 250px;
     height: 190px;
     color: black;
@@ -136,41 +136,9 @@ header {
 
 .rainy {
     background: none;
-    background-image: url('../image/rain-gif.webp');
+    background-image: url('../image/pouring-rain-raoin-cloud.gif');
     align-items: center;
     border-radius: 100px;
-    background-size: cover;
-}
-
-.desert {
-    background: none;
-    background-image: url('../image/desert-lucky-luke.webp');
-    align-items: center;
-    border-radius: 300px;
-    background-size: cover;
-}
-
-.winter {
-    background: none;
-    background-image: url('../image/38-384323_clip-art-raining-cloud-cartoon-transparent-background-rain.png');
-    align-items: center;
-    border-radius: 300px;
-    background-size: cover;
-}
-
-.spring {
-    background: none;
-    background-image: url('../image/smiling-sun-illustration-character-34434947.jpeg');
-    align-items: center;
-    border-radius: 300px;
-    background-size: cover;
-}
-
-.freez {
-    background: none;
-    background-image: url('../image/mascot-illustration-featuring-happy-snowflakes-260nw-528059782.webp');
-    align-items: center;
-    border-radius: 300px;
     background-size: cover;
 }
 
