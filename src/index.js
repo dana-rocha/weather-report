@@ -1,4 +1,5 @@
 console.log("hello world")
+// Leaving a comment here - Dana
 let state = {
     currentTemp: 70,
     city: 'Seattle'
