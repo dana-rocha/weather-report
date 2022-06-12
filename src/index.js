@@ -71,10 +71,12 @@ const updateCurrentTemp = function(temp) {
 
 const resetCity = () => {
     state.city = 'Seattle';
+    state.currentTemp = 70;
     document.querySelector('#cityName').value = '';
     const curWeatherHeader = document.getElementById('headercityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
-    console.log("Resetting!");
+    updateCurrentTemp(state.currentTemp);
+    // console.log("Resetting!");
 };
 
 
