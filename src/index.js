@@ -6,7 +6,7 @@ let state = {
 };
 
 const cityID = document.getElementById('cityName');
-const displayName = document.getElementById('headercityName');
+const displayName = document.getElementById('headerCityName');
 const displaySky = document.getElementById('skyPic');
 const skyType = document.getElementById('skyOptions');
 const reset = document.getElementById('reset');
@@ -85,7 +85,7 @@ const resetCity = () => {
 
 
 const updateCity = () => {
-    const inputCity = document.querySelector('#cityname');
+    const inputCity = document.querySelector('#cityName');
     inputCity.addEventListener('change', updateValue);
 
     const headerCityName = document.getElementById('headerCityName');
@@ -104,23 +104,23 @@ const updateCity = () => {
 
 // changing temperature color and garden picture base on degree
 const colorCoding = () => {
-    let landscape = document.querySelector("#skyGarden");
+    let landscape = document.querySelector('#skyGarden');
     let colorTemp = document.getElementById('tempContainer');
 
     if (state.currentTemp >= 80) {
-        colorTemp.style.color = "red";
+        colorTemp.style.color = 'red';
         landscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂🍳';
     } else if (state.currentTemp >= 70 && state.currentTemp <= 79) {
-        colorTemp.style.color = "orange";
+        colorTemp.style.color = 'orange';
         landscape.textContent = '🌸🌿🌼__🌷🌻🌿 _☘️🌱 _🌻🌷 ';
     } else if (state.currentTemp >= 60 && state.currentTemp <= 69) {
-        colorTemp.style.color = "yellow";
+        colorTemp.style.color = 'yellow';
         landscape.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
     } else if (state.currentTemp >= 50 && state.currentTemp <= 59) {
         colorTemp.style.color = "green";
         landscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
     } else {
-        colorTemp.style.color = "teal";
+        colorTemp.style.color = 'teal';
         landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
     }
 };
