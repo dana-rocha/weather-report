@@ -76,7 +76,6 @@ const resetCity = () => {
     const curWeatherHeader = document.getElementById('headercityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
     updateCurrentTemp(state.currentTemp);
-    // console.log("Resetting!");
 };
 
 
