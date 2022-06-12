@@ -1,15 +1,15 @@
 console.log("hello world")
 let state = {
     currentTemp: 70,
-    city: 'Seattle'
+    city: 'Honolulu'
 };
 
-const cityID = document.getElementById('cityname');
-const displayName = document.getElementById('headerCityName');
+const cityID = document.getElementById('cityName');
+const displayName = document.getElementById('headercityName');
 const displaySky = document.getElementById('skyPic');
-const skyType = document.getElementById('skyoptions');
+const skyType = document.getElementById('skyOptions');
 const reset = document.getElementById('reset');
-const defaultCity = 'Seattle';
+// const defaultCity = 'San Diego';
 
 const increaseTemp = () => {
     console.log("inside increase temp")
@@ -17,70 +17,97 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
-}
+};
 
 const decreaseTemp = () => {
     state.currentTemp -= 1;
     const tempContainer = document.querySelector('#tempContainer')
     tempContainer.textContent = `${state.currentTemp} ℉`;
     colorCoding();
-}
+};
 
-const getCurrentTemp = function() {
+const getLatAndLon = function() {
     let latitude;
     let longitude;
 
-    axios
-        .get('http://localhost:5000/location', { params: { q: city } })
+    axios.get('http://localhost:5000/location', { params: { q: state.city } })
         .then((response) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
-            axios
-                .get('http://localhost:5000/weather', {
-                    params: { lat: latitude, lon: longitude },
-                })
-                .then((response) => {
-                    const kelvin = response.data.current.temp;
-                    const fahrenheit = (9 / 5) * (kelvin - 273) + 32;
-                    temperature = Math.round(fahrenheit);
-                    newTemperature();
-                })
-                .catch((error) => {
-                    console.log('error');
-                });
+            console.log('Printing inside lat and lon stuff');
+            console.log(`latitude is this: ${latitude}`);
+            console.log(`longitude is this: ${longitude}`);
+            
+            return getCurrentTemp(latitude, longitude);
+
+            // axios
+            //     .get('http://localhost:5000/weather', {
+            //         params: { lat: latitude, lon: longitude },
+            //     })
+            //     .then((response) => {
+            //         const kelvin = response.data.current.temp;
+            //         const fahrenheit = (9 / 5) * (kelvin - 273) + 32;
+            //         temperature = Math.round(fahrenheit);
+            //         newTemperature();
+            //     })
+            //     .catch((error) => {
+            //         console.log('cannot get new weather');
+            //     });
         })
         .catch((error) => {
-            console.log('error :(');
+            console.log(response.status);
+            console.log('Cannot find lat and lon');
         });
+
 };
+
+const getCurrentTemp = function(latitude, longitude) {
+    axios
+        .get('http://localhost:5000/weather', {
+            params: { lat: latitude, lon: longitude },
+        })
+        .then((response) => {
+            const kelvin = response.data.current.temp;
+            const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
+            // temperature = Math.round(fahrenheit);
+            // console.log(`temp in fahren: ${temperature}`);
+
+            const tempContainer = document.querySelector('#tempContainer')
+            tempContainer.textContent = `${temperature} ℉`;
+            console.log(`temp in fahren: ${temperature}`);
+            // return updateValue(temperature);
+            // newTemperature();
+        })
+        .catch((error) => {
+            console.log('cannot get new weather');
+        });
+}
 
 const resetCity = () => {
     state.city = 'Seattle';
-    document.querySelector('#cityname').value = '';
-    const curWeatherHeader = document.getElementById('headerCityName');
+    document.querySelector('#cityName').value = '';
+    const curWeatherHeader = document.getElementById('headercityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
 };
 
 
 const updateCity = () => {
-    const inputCity = document.querySelector('#cityname');
+    const inputCity = document.querySelector('#cityName');
     inputCity.addEventListener('change', updateValue);
 
-    const headerCityName = document.getElementById('headerCityName');
-    headerCityName.textContent = inputCity;
+    const headercityName = document.getElementById('headercityName');
+    headercityName.textContent = inputCity;
 
     function updateValue(x) {
         city = x.target.value;
-        headerCityName.textContent = 'Current Weather for ' + city;
-        getCurrentTemp();
+        headercityName.textContent = 'Current Weather for ' + city;
+        // getCurrentTemp();
     }
 };
 
-
-
 // changing temperature color and garden picture base on degree
 const colorCoding = () => {
-    let landscape = document.querySelector("#skyGarden");
+    let landscape = document.querySelector('#skyGarden');
     let colorTemp = document.getElementById('tempContainer');
 
     if (state.currentTemp >= 80) {
@@ -105,30 +132,30 @@ const updateSky = (a) => {
     const optionSky = a.target.value;
 
     if (optionSky === '⛅️Cloudy☁️') {
-        displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';;
+        displaySky.innerText = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';;
     } else if (optionSky === '🌈Sunny☀️') {
-        displaySky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+        displaySky.innerText = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
     } else if (optionSky === '⛈Rainy☔️') {
-        displaySky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+        displaySky.innerText = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
     } else if (optionSky === '❄️Snowy☃️') {
-        displaySky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+        displaySky.innerText = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
     }
 };
 
 //registering events
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-button");
-    increaseButton.addEventListener("click", increaseTemp);
+    increaseButton.addEventListener('click', increaseTemp);
 
-    const decreaseButton = document.getElementById("decrease-button");
-    decreaseButton.addEventListener("click", decreaseTemp);
+    const decreaseButton = document.getElementById('decrease-button');
+    decreaseButton.addEventListener('click', decreaseTemp);
 
     skyType.addEventListener('change', updateSky);
 
     cityID.addEventListener('input', updateCity);
 
     reset.addEventListener('click', resetCity);
-    getCurrentTemp();
+    getLatAndLon();
 };
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+document.addEventListener('DOMContentLoaded', registerEventHandlers);
