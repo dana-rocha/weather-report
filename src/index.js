@@ -8,7 +8,6 @@ const displayName = document.getElementById('headerCityName');
 const displaySky = document.getElementById('skyPic');
 const skyType = document.getElementById('skyOptions');
 const reset = document.getElementById('reset');
-//const defaultCity = 'Seattle';
 
 const increaseTemp = () => {
     console.log("inside increase temp")
@@ -26,25 +25,21 @@ const decreaseTemp = () => {
     colorCoding();
 
 }
-
+// The getLatAndLon and getCurrentTemp functions have working functionality 
+// but there are errors in the Console log, Goeun said we can ignore it
 const getLatAndLon = function() {
     let latitude;
     let longitude;
 
     axios.get('http://localhost:5000/location', { params: { q: state.city } })
         .then((response) => {
+
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
-            // console.log('Printing inside lat and lon stuff');
-            // console.log(`latitude is this: ${latitude}`);
-            // console.log(`longitude is this: ${longitude}`);
-            // console.log(`display name ${response.data[0].display_name}`);
-
-            return getCurrentTemp(latitude, longitude);
+            getCurrentTemp(latitude, longitude);
         })
         .catch((error) => {
-            // console.log(response.status);
-            console.log('Cannot find lat and lon');
+            console.log('Cannot find lat and lon', error);
         });
 
 };
@@ -57,9 +52,9 @@ const getCurrentTemp = function(latitude, longitude) {
         .then((response) => {
             const kelvin = response.data.current.temp;
             const temperature = Math.round((9 / 5) * (kelvin - 273) + 32);
-            // console.log(`temp in fahren: ${temperature}`);
+            
             console.log(`new temp: ${temperature}`);
-            return updateCurrentTemp(temperature);
+            updateCurrentTemp(temperature);
         })
         .catch((error) => {
             console.log('cannot get new weather');
@@ -79,6 +74,7 @@ const resetCity = () => {
     document.querySelector('#cityName').value = '';
     const curWeatherHeader = document.getElementById('headercityName');
     curWeatherHeader.textContent = 'Current Weather for ' + state.city;
+    console.log("Resetting!");
 };
 
 
@@ -94,7 +90,7 @@ const updateCity = () => {
         headerCityName.textContent = 'Current Weather for ' + city;
         state.city = city;
         console.log(`This is the new city ${state.city}`);
-        return getLatAndLon(state.city);
+        getLatAndLon(state.city);
     }
 };
 
@@ -123,7 +119,7 @@ const colorCoding = () => {
     }
 };
 const changeSky = function() {
-    const input = document.querySelector('#skytype-select');
+    const input = document.querySelector('#skyOptions-select');
 
     input.addEventListener('change', (event) => {
         const skyOutput = document.querySelector('#sky');
